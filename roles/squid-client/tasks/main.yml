@@ -1,0 +1,17 @@
+---
+- name: copy export files for sh and csh users
+  copy:
+    src: etc/profile.d/
+    dest: /etc/profile.d/
+
+- name: Add a line to a file if the file does not exist, without passing regexp
+  lineinfile:
+    path: /etc/environment
+    regexp: '^http_proxy='
+    line: 'http_proxy=http://192.168.56.133:3128/'
+
+- name: Add a line to a file if the file does not exist, without passing regexp
+  lineinfile:
+    path: /etc/environment
+    regexp: '^REQUESTS_CA_BUNDLE='
+    line: 'REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-bundle.crt'
