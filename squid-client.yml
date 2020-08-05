@@ -1,8 +1,0 @@
----
-# This playbook deploys the whole application stack in this site.
-
-- name: configure squid client
-  hosts: all
-
-  roles:
-    - squid-client
