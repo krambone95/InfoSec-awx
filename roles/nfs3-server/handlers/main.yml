@@ -1,0 +1,14 @@
+---
+# Handlers
+
+# Restart squid service
+- name: restart squid
+  service:
+    name: squid
+    state: restarted
+
+# Restart firewalld service
+- name: restart iptables
+  service:
+    name: iptables
+    state: restarted

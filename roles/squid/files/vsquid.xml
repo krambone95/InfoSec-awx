@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>vsquid</short>
-  <description>List of custom squid ports</description>
-  <port protocol="tcp" port="3128"/><!-- HTTPS -->
-  <port protocol="tcp" port="3129"/><!-- HTTPS -->
-  <port protocol="tcp" port="3130"/><!-- HTTPS -->
-</service>
