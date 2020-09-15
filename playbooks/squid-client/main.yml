@@ -1,0 +1,10 @@
+---
+# Install / Uninstall squid client settings
+
+- name: Install proxy settings
+  include_tasks: install.yml
+  when: state|default('present') == 'present'
+
+- name: Uninstall proxy settings
+  include_tasks: install.yml
+  when: state|default('present') == 'absent'
