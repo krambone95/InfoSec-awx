@@ -20,8 +20,8 @@
     regexp: '^https_proxy='
     state: absent
     
-- name: Add a line to a file if the file does not exist, without passing regexp
-  lineinfile:
-    path: /etc/environment
-    regexp: '^REQUESTS_CA_BUNDLE='
-    state: absent
+#- name: Add a line to a file if the file does not exist, without passing regexp
+#  lineinfile:
+#    path: /etc/environment
+#    regexp: '^REQUESTS_CA_BUNDLE='
+#    state: absent
