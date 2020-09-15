@@ -1,6 +1,10 @@
-- include: uninstall.yml
-- include: install.yml
-- name: copy export files for sh and csh users
-  copy:
-    src: etc/profile.d/
-    dest: /etc/profile.d/
+---
+# Install / Uninstall squid client settings
+
+- name: Install proxy settings
+  include_tasks: install.yml
+  when: state|default('present') == 'present'
+
+- name: Uninstall proxy settings
+  include_tasks: install.yml
+  when: state|default('present') == 'absent'
