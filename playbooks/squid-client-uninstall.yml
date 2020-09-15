@@ -3,7 +3,6 @@
 
 - name: Playbook to remove squid client settings
   hosts: all
-
   roles:
   - role: squid-client
     state: absent
