@@ -6,5 +6,5 @@
   when: state|default('present') == 'present'
 
 - name: Uninstall proxy settings
-  include_tasks: install.yml
+  include_tasks: uninstall.yml
   when: state|default('present') == 'absent'
