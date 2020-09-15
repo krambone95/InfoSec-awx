@@ -1,3 +1,4 @@
+---
 - name: Remove /etc/profile/http_proxy.csh
   file:
     path: /etc/profile.d/http_proxy.csh
