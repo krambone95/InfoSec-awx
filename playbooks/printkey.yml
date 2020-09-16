@@ -1,5 +1,9 @@
 ---
-# Print Key
+# This playbook deploys the whole application stack in this site.
 
-- debug:
-    msg: Printed key is {{ infosec_ssl_squid.PUBLIC_KEY }}
+- name: Playbook to remove squid client settings
+  hosts: all
+
+  roles:
+  - role: ../roles/squid-client
+    state: absent
