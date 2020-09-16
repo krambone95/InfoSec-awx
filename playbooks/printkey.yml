@@ -8,4 +8,4 @@
   - name: Ansible create file with content example
     copy:
       dest: "/etc/test.txt"
-      content: {{ infosec_ssl_squid.PUBLIC_KEY }}
+      content: {{ PUBLIC_KEY }}
