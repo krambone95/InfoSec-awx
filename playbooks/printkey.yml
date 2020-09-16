@@ -4,5 +4,6 @@
 - name: Playbook to print the pubkey value
   hosts: all
 
-- debug:
+  tasks:
+  - debug:
     msg: Data {{ infosec_ssl_squid.PUBLIC_KEY }}
