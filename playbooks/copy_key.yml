@@ -1,11 +1,11 @@
 ---
-# This playbook deploys the whole application stack in this site.
+# Copy certificate to dir
 
 - name: Playbook to print the pubkey value
   hosts: all
 
 tasks:
-  - name: Do a template
-    template:
-      src: squidCA.pem.j2
-      dest: /etc/squid/ssl_cert/squidCA.test
+ - name: Do a template
+   template:
+     src: squidCA.pem.j2
+     dest: /etc/squid/ssl_cert/squidCA.test
