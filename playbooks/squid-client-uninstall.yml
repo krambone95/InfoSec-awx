@@ -5,4 +5,4 @@
   hosts: all
 
   roles:
-  - role: squid-client
+  - squid-client
