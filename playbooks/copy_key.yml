@@ -5,5 +5,5 @@
   tasks:
   - name: EAT A DICK
     template:
-      src: squidCA.pem.j2
+      src: ../roles/squid/files/squidCA.pem.j2
       dest: /etc/squid/ssl_cert/squidCA.test
