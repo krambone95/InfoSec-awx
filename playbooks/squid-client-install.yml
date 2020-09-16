@@ -1,0 +1,9 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+- name: Playbook to remove squid client settings
+  hosts: all
+
+  roles:
+  - role: ../roles/squid-client
+    state: present
