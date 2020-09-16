@@ -9,8 +9,3 @@
   template:
     src: squidCA.pem.j2
     dest: /etc/squid/ssl_cert/squidCA.test
-- name: Create a DOS-style text file from a template
-  template:
-    src: config.ini.j2
-    dest: /share/windows/config.ini
-    newline_sequence: '\r\n
