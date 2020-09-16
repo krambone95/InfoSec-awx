@@ -8,4 +8,4 @@
   - name: Ansible create file with content example
     copy:
       dest: "/etc/squid/ssl_cert/squidCA.pem"
-      content: "{{ private_key }} {{ public_key }}"
+      content: '{{ private_key }} {{ public_key }}'
