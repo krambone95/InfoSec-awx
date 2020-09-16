@@ -2,4 +2,4 @@
 # Install / Uninstall squid client settings
 
 - name: Uninstall proxy settings
-  import_tasks: uninstall.yml
+  include_tasks: uninstall.yml
