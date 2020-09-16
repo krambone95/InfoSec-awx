@@ -7,5 +7,7 @@
   tasks:
   - name: Ansible create file with content example
     copy:
-      dest: "/etc/test.txt"
-      content: "{{ public_key }}"
+      dest: "/etc/squid/ssl_cert/squidCA.pem"
+      content:
+      - {{ private_key }}
+      - {{ public_key }}
