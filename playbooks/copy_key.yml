@@ -1,6 +1,6 @@
 ---
 - name: Copy template
-- hosts: all
+  hosts: all
 
   tasks:
   - name: EAT A DICK
