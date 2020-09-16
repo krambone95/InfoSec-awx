@@ -1,10 +1,5 @@
 ---
 # Install / Uninstall squid client settings
 
-- name: Install proxy settings
-  import_tasks: install.yml
-  when: state == "present"
-
 - name: Uninstall proxy settings
   import_tasks: uninstall.yml
-  when: state == "absent"
