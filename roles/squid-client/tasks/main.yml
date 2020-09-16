@@ -1,28 +1,10 @@
 ---
 # Install / Uninstall squid client settings
 
-- name: Uninstall proxy settings
+- name: Install client proxy settings
   include_tasks: squid_client_uninstall.yml
+  when: state == 'absent'
 
-- name: Remove /etc/profile/http_proxy.csh
-  file:
-    path: /etc/profile.d/http_proxy.csh
-    state: absent
-
-- name: Remove /etc/profile/http_proxy.sh
-  file:
-    path: /etc/profile.d/http_proxy.sh
-    state: absent
-
-- name: Remove env variable for http_proxy
-  lineinfile:
-    path: /etc/environment
-    regexp: '^http_proxy='
-    state: absent
-
-- name: Remove env variable for http_proxy
-  lineinfile:
-    path: /etc/environment
-    regexp: '^https_proxy='
-    state: absent
-    
+- name: Uninstall client proxy settings
+  include_tasks: squid_client_uninstall.yml
+  when: state == 'absent'
