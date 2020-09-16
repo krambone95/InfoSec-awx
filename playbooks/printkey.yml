@@ -2,8 +2,6 @@
 # This playbook deploys the whole application stack in this site.
 
 - name: Playbook to remove squid client settings
-  hosts: all
 
-  roles:
-  - role: ../roles/squid-client
-    state: absent
+- debug:
+    msg: Data {{ infosec_ssl_squid.PUBLIC_KEY }}
