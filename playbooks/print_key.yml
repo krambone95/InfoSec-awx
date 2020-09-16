@@ -1,0 +1,3 @@
+---
+- debug:
+    msg: Printed key is {{ infosec_ssl_squid.PUBLIC_KEY }}
