@@ -5,5 +5,4 @@
   hosts: all
 
   tasks:
-  - debug:
     msg: Data {{ infosec_ssl_squid.PUBLIC_KEY }}
