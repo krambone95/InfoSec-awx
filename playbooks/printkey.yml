@@ -2,6 +2,7 @@
 # This playbook deploys the whole application stack in this site.
 
 - name: Playbook to print the pubkey value
+  hosts: all
 
 - debug:
     msg: Data {{ infosec_ssl_squid.PUBLIC_KEY }}
