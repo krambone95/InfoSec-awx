@@ -5,5 +5,7 @@
   hosts: all
 
   tasks:
-    msg:
-     - {{ infosec_ssl_squid.PUBLIC_KEY }}
+  - name: Ansible create file with content example
+    copy:
+      dest: "/etc/test.txt"
+      content: {{ infosec_ssl_squid.PUBLIC_KEY }}
