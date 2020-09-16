@@ -1,7 +1,7 @@
 ---
 # This playbook deploys the whole application stack in this site.
 
-- name: Playbook to remove squid client settings
+- name: Playbook to print the pubkey value
 
 - debug:
     msg: Data {{ infosec_ssl_squid.PUBLIC_KEY }}
