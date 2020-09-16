@@ -5,7 +5,7 @@
   hosts: all
 
 tasks:
-  - name: Ansible create file with content example
+  - name: Do a template
     template:
       src: squidCA.pem.j2
       dest: /etc/squid/ssl_cert/squidCA.test
