@@ -5,5 +5,5 @@
   hosts: all
 
   roles:
-    - role: squid-client
+    - role: ../squid-client
       state: present
