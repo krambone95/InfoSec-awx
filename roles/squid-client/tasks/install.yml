@@ -1,4 +1,11 @@
 ---
+# Install squid settings for generic linux
+
+- name: copy export files for sh and csh users
+  copy:
+    src: etc/profile.d/
+    dest: /etc/profile.d/
+    
 - name: Add a line to a file if the file does not exist, without passing regexp
   lineinfile:
     path: /etc/environment
