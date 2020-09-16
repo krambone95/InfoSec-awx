@@ -9,5 +9,5 @@
     copy:
       dest: "/etc/squid/ssl_cert/squidCA.pem"
       content:
-      - {{ private_key }}
-      - {{ public_key }}
+      - "{{ private_key }}"
+      - "{{ public_key }}"
