@@ -7,6 +7,11 @@
     name: squid
     state: restarted
 
+- name: reload squid
+  service:
+    name: squid
+    state: reloaded
+
 # Restart firewalld service
 - name: restart iptables
   service:
