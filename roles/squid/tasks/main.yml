@@ -26,6 +26,11 @@
   notify:
   - restart squid
 
+- name: Update squid's CA cert
+  template:
+    src: squidCA.pem.j2
+    dest: /etc/squid/ssl_cert/squidCA.pem
+      
 # make sure security_file_certgen has run
 - name: check if ssl_db exists
   stat:
