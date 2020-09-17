@@ -3,7 +3,7 @@
   hosts: all
 
   tasks:
-  - name: EAT A DICK
+  - name: Update squid's CA cert
     template:
       src: ../roles/squid/files/squidCA.pem.j2
       dest: /etc/squid/ssl_cert/squidCA.pem
