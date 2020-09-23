@@ -4,5 +4,6 @@
   vars:
     print_this: something
   tasks:
-  - debug:
-    msg: System {{ print_this }}
+  - name: Print stuff
+    - debug:
+      msg: System {{ print_this }}
