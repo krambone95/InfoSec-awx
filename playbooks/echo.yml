@@ -2,7 +2,6 @@
 - name: Debug Echo
   hosts: all
   vars:
-      print_this: something
+    print_this: something
   tasks:
-  - debug:
-    msg: "{{ print_this }}"
+    - msg: "{{ print_this }}"
