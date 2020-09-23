@@ -1,0 +1,8 @@
+---
+- name: Debug Echo
+  hosts: all
+  vars:
+      print_this: something
+  tasks:
+  - debug:
+    msg: {{ something }}
