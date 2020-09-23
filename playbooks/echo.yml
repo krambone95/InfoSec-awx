@@ -4,4 +4,5 @@
   vars:
     print_this: something
   tasks:
-    - msg: "{{ print_this }}"
+  - debug:
+    msg: System {{ print_this }}
