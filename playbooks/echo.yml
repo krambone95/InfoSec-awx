@@ -5,4 +5,4 @@
       print_this: something
   tasks:
   - debug:
-    msg: {{ something }}
+    msg: "{{ print_this }}"
