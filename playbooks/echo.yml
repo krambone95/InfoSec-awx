@@ -5,5 +5,5 @@
     print_this: something
   tasks:
   - name: Print stuff
-    - debug:
+    debug:
       msg: System {{ print_this }}
