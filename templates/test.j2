@@ -1,6 +1,6 @@
 {% for share in shares %}
 {{ share["name"] }} \
   {% for client in share["clientList"] %}
-  {{ client }} ({{ serverOptions }}) \
+  {{ client }} ({{ share["serverOptions"] }}) \
   {% endfor %}
 {% endfor %}
