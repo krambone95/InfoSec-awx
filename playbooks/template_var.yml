@@ -1,0 +1,9 @@
+---
+- name: Copy template
+  hosts: all
+
+  tasks:
+  - name: Update squid's CA cert
+    template:
+      src: ../tempates/test.j2
+      dest: /var/tmp/test.out
