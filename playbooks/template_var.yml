@@ -17,7 +17,7 @@
           - 192.168.56.33/32
           - 192.168.56.34/32
   tasks:
-  - name: Update squid's CA cert
+  - name: write /etc/exports file from source control
     template:
       src: ../templates/test.j2
       dest: /var/tmp/test.out
