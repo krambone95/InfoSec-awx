@@ -1,7 +1,21 @@
 ---
 - name: Copy template
   hosts: all
-
+  vars:
+    shares:
+      - name: raida-ro
+        serverOptions: "rw,insecure_locks,no_subtree_check"
+        clientOptions: "x-systemd.automount,rw"
+        clientList:
+          - 192.168.56.30/32
+          - 192.168.56.31/32
+          - 192.168.56.32/32
+      - name: raida-rw
+        serverOptions: "ro,no_subtree_check"
+        clientOptions: "ro"
+        clientList:
+          - 192.168.56.33/32
+          - 192.168.56.34/32
   tasks:
   - name: Update squid's CA cert
     template:
