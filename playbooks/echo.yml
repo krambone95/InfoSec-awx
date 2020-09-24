@@ -16,7 +16,7 @@
         clientList:
           - 192.168.56.33/32
           - 192.168.56.34/32
-    tasks:
-    - name: Print stuff
-      debug:
-        msg: System {{ shares[name] }}
+  tasks:
+  - name: Print stuff
+    debug:
+      msg: System {{ shares[name] }}
