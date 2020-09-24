@@ -2,6 +2,6 @@
 {{ share["name"] }} \
   {% for client in share["clientList"] %}
   {{ client }} ({{ share["serverOptions"] }}) {% if not loop.last %}\
-{% endif %}
+  {% endif %}
   {% endfor %}
 {% endfor %}
