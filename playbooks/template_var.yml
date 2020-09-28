@@ -3,19 +3,26 @@
   hosts: all
   vars:
     shares:
-      - name: raida-ro
+      - name: raida-rw-isl-nsc
         serverOptions: "rw,insecure_locks,no_subtree_check"
         clientOptions: "x-systemd.automount,rw"
         clientList:
-          - 192.168.56.30/32
-          - 192.168.56.31/32
-          - 192.168.56.32/32
-      - name: raida-rw
+          {{ clients["raida-rw-isl-nsc-clients"].clients }}
+      - name: raida-ro-nsc
         serverOptions: "ro,no_subtree_check"
         clientOptions: "ro"
         clientList:
-          - 192.168.56.33/32
-          - 192.168.56.34/32
+          {{ clients["raida-ro-nsc-clients"].clients }}
+    clients:
+      - name: raida-rw-isl-nsc-clients
+        clients:
+          - 192.168.56.51
+          - 192.168.56.62
+
+      - name: raida-ro-nsc-clients
+        clients:
+          - 192.168.56.55
+          - 192.168.56.66
   tasks:
   - name: write /etc/exports file from source control
     template:
