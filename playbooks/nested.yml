@@ -12,11 +12,11 @@
         clientList:
           {{ raida-ro-nsc-clients }}
 
-    raida-rw-isl-nsc-clients
+    raida-rw-isl-nsc-clients:
       - 192.168.56.44
       - 192.168.56.22
 
-    raida-ro-nsc-clients
+    raida-ro-nsc-clients:
       - 192.168.56.55
       - 192.168.56.66
 
