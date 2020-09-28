@@ -1,0 +1,27 @@
+---
+- name: Copy template
+  hosts: all
+  vars:
+    shares:
+      - name: raida-rw-isl-nsc
+        serverOptions: "rw,insecure_locks,no_subtree_check"
+        clientList:
+          {{ raida-rw-isl-nsc-clients }}
+      - name: raida-ro-nsc
+        serverOptions: "ro,no_subtree_check"
+        clientList:
+          {{ raida-ro-nsc-clients }}
+
+    raida-rw-isl-nsc-clients
+      - 192.168.56.44
+      - 192.168.56.22
+
+    raida-ro-nsc-clients
+      - 192.168.56.55
+      - 192.168.56.66
+
+  tasks:
+  - name: write /etc/exports file from source control
+    template:
+      src: ../templates/test.j2
+      dest: /var/tmp/test.out
