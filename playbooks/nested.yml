@@ -6,11 +6,11 @@
       - name: raida-rw-isl-nsc
         serverOptions: "rw,insecure_locks,no_subtree_check"
         clientList:
-          {{ raida-rw-isl-nsc-clients }}
+          "{{ raida-rw-isl-nsc-clients }}"
       - name: raida-ro-nsc
         serverOptions: "ro,no_subtree_check"
         clientList:
-          {{ raida-ro-nsc-clients }}
+          "{{ raida-ro-nsc-clients }}"
 
     raida-rw-isl-nsc-clients:
       - 192.168.56.44
