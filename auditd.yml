@@ -1,0 +1,9 @@
+---
+# Wrapper to start auditd
+
+- name: begin auditd management
+  hosts: all
+
+  roles:
+  - role: auditd
+    state: "{{ auditd_state }}"

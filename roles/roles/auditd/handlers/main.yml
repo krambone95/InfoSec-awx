@@ -1,0 +1,8 @@
+---
+# Handlers
+
+# Auditd doesn't like systemd. Look it up.
+- name: restart auditd
+  shell:
+    cmd: service auditd restart
+    warn: false

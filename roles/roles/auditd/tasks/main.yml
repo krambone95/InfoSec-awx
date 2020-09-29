@@ -1,0 +1,14 @@
+---
+# Install / Uninstall squid client settings
+
+- name: Install auditd
+  include_tasks: install.yml
+  when: state == 'present'
+
+- name: Uninstall client proxy settings
+  include_tasks: uninstall.yml
+  when: state == 'absent'
+
+- name: Uninstall client proxy settings
+  include_tasks: update.yml
+  when: state == 'update'

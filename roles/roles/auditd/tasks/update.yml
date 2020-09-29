@@ -1,0 +1,9 @@
+---
+# deploy audit rules
+
+- name: copy rules based on group
+  copy:
+    src: "{{ auditd_group }}.audit.rules"
+    dest: /etc/audit/rules.d/audit.rules
+  notify:
+  - restart auditd

@@ -1,0 +1,9 @@
+---
+# Disable auditd.
+
+- name: Update auditd
+  hosts: all
+
+  roles:
+  - role: roles/auditd
+    state: update

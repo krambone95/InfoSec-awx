@@ -1,0 +1,6 @@
+---
+# install auditd
+- name: ensure auditd running
+  service:
+    name: auditd
+    state: stopped
