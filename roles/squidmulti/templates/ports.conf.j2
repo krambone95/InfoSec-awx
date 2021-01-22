@@ -1,0 +1,35 @@
+#### include /etc/${service_name}/ports.conf
+#################################################
+acl SafePorts port 80
+acl SafePorts port 443
+
+acl SafePorts port {{ port_explicit_proxy }}
+acl SafePorts port {{ port_http_proxy }}
+acl SafePorts port {{ port_https_proxy }}
+
+acl TProxyPorts port {{ port_explicit_proxy }}
+acl TProxyPorts port {{ port_http_proxy }}
+acl EproxyPorts port {{ port_https_proxy }}
+
+# Default blocks
+acl CONNECT method CONNECT
+http_access deny !SafePorts
+http_access deny manager
+http_access deny to_localhost
+cache deny all
+
+http_access allow CONNECT all
+
+http_port {{ port_explicit_proxy }}
+
+### Listen - Intercept HTTP
+http_port {{ port_http_proxy }} intercept
+
+### Listen - Intercept and bump HTTPS
+https_port {{ port_https_proxy }} intercept ssl-bump \
+generate-host-certificates=on \
+dynamic_cert_mem_cache_size=4MB \
+cert=/etc/squid/ssl_cert/squidCA.pem \
+capath=/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem \
+tls-dh=prime256v1:/etc/squid/dhparam.pem
+#################################################

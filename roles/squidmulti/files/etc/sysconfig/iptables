@@ -1,0 +1,22 @@
+# ansible managed
+*nat
+:PREROUTING ACCEPT [40:2725]
+:INPUT ACCEPT [10:730]
+:POSTROUTING ACCEPT [37576:2256104]
+:OUTPUT ACCEPT [37553:2255436]
+-A PREROUTING -s 192.168.56.0/24 -i {{ ansible_default_ipv4.interface }} -p tcp -m tcp --dport 80 -m comment --comment "Redirect 80 to squid 3129" -j REDIRECT --to-ports 3129
+-A PREROUTING -s 192.168.56.0/24 -i {{ ansible_default_ipv4.interface }} -p tcp -m tcp --dport 443 -m comment --comment "Redirect 443 to squid 3130" -j REDIRECT --to-ports 3130
+-A POSTROUTING ! -d 192.168.56.0/24 -o ens33 -j SNAT --to-source {{ ansible_default_ipv4.address }}
+COMMIT
+# ansible managed
+*filter
+:INPUT ACCEPT [33529:14565709]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [364960:38174778]
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 22 -m comment --comment "Accept new ssh connections." -m conntrack --ctstate NEW -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 80 -m comment --comment "Accept new transparent proxy HTTP connections." -m conntrack --ctstate NEW -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 443 -m comment --comment "Accept new transparent proxy HTTPS connections." -m conntrack --ctstate NEW -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 3128 -m comment --comment "Accept new explicit proxy connections." -m conntrack --ctstate NEW -j ACCEPT
+COMMIT
+# ansible managed
