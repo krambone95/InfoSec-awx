@@ -2,6 +2,8 @@
 
 ##########################
 ### Service names and port mapping
-
 service_names:
-  - squidvpm
+  - name: squidvpm
+    port_explicit: 3131
+    port_http: 3132
+    port_https: 3133
