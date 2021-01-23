@@ -8,3 +8,10 @@ service_names:
     port_http_proxy: 3132
     port_https_proxy: 3133
     acl_type: restrictive
+    src_net: "192.168.56.140/32"
+  - name: squiduser
+    port_explicit_proxy: 3134
+    port_http_proxy: 3135
+    port_https_proxy: 3136
+    acl_type: permissive
+    src_net: "192.168.56.132/32"
