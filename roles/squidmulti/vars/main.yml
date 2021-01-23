@@ -8,4 +8,3 @@ service_names:
     port_http_proxy: 3132
     port_https_proxy: 3133
     acl_type: default_restrictive
-    
