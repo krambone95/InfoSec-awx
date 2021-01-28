@@ -33,8 +33,3 @@
     seuser: system_u
     setype: squid_conf_t
   loop: "{{ squid_instances }}"
-
-- name: copy acl config
-  template:
-    src: squidCA.pem.j2
-    dest: /etc/squid/ssl_cert/squidCA.pem
