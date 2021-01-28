@@ -1,0 +1,78 @@
+- name: copy config - static global files
+  copy:
+    src: etc/squidglobal/
+    dest: /etc/"{{ item.name }}"/
+    owner: squid
+    group: squid
+    mode: u=rw,g=r,o=r
+    seuser: system_u
+    setype: squid_conf_t
+  loop: "{{ squid_instances }}"
+  notify:
+  - restart squid
+
+- name: copy config - template global files
+  template:
+    src: etc/squidglobal/g_ports.conf.j2
+    dest: /etc/"{{ item.name }}"/g_ports.conf.j2
+    owner: squid
+    group: squid
+    mode: u=rw,g=r,o=r
+    seuser: system_u
+    setype: squid_conf_t
+  loop: "{{ squid_instances }}"
+  notify:
+  - restart squid
+
+- name: copy config - create "{{ item.name }}".conf
+  copy:
+    src: etc/squidglobal/squid.conf
+    dest: /etc/"{{ item.name }}"/squid.conf
+    owner: squid
+    group: squid
+    mode: u=rw,g=r,o=r
+    seuser: system_u
+    setype: squid_conf_t
+  loop: "{{ squid_instances }}"
+
+- name: copy acl config
+  template:
+    src: squidCA.pem.j2
+    dest: /etc/squid/ssl_cert/squidCA.pem
+
+- name: SELinux ports
+  seport:
+    ports: "{{ item.port_explicit_proxy }}","{{ item.port_http_proxy }}","{{ item.port_https_proxy}}"
+    proto: tcp
+    setype: squid_port_t
+    state: present
+  loop: "{{ squid_instances }}"
+
+- name: Add iptables routing
+  blockinfile:
+    path:/etc/sysconfig/iptables
+    insertbefore:"##end_squid_multi"
+    block: |
+      -A PREROUTING -s "{{ item.src_net }}" -i {{ ansible_default_ipv4.interface }} -p tcp -m tcp --dport 80 -m comment --comment "80 to squid 3129" -j REDIRECT --to-ports "{{ item.port_http_proxy }}"
+      -A PREROUTING -s "{{ item.src_net }}" -i {{ ansible_default_ipv4.interface }} -p tcp -m tcp --dport 443 -m comment --comment "443 to squid 3130" -j REDIRECT --to-ports "{{ item.port_https_proxy }}"
+  loop: "{{ squid_instances }}"
+  notify:
+  - restart iptables
+
+- name: create systemd service - place service.unit file
+  template:
+    src: usr/lib/systemd/service_name.service.j2
+    dest: /usr/lib/systemd/"{{ item.name }}".service
+  loop: "{{ squid_instances }}"
+
+- name: create systemd service - place env variable
+  template:
+    src: etc/sysconfig/service_name.j2
+    dest: /etc/sysconfig/"{{ item.name }}"
+  loop: "{{ squid_instances }}"
+
+- name: ensure "{{ item.name }}" is running
+  service:
+    name: {{ item.name }}
+    state: started
+  loop: "{{ squid_instances }}"
