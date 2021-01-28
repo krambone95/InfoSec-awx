@@ -2,5 +2,5 @@
 # Install / Uninstall squid client settings
 
 - name: Install auditd
-  include_tasks: copy_configs.yml
+  include_tasks: system_services.yml
   when: state == 'test'
