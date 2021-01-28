@@ -2,5 +2,5 @@
 # Install / Uninstall squid client settings
 
 - name: Install auditd
-  include_tasks: selinux.yml
+  include_tasks: iptables.yml
   when: state == 'test'
