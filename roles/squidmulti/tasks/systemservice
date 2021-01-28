@@ -1,0 +1,19 @@
+---
+
+- name: create systemd service - place service.unit file
+  template:
+    src: usr/lib/systemd/service_name.service.j2
+    dest: /usr/lib/systemd/"{{ item.name }}".service
+  loop: "{{ squid_instances }}"
+
+- name: create systemd service - place env variable
+  template:
+    src: etc/sysconfig/service_name.j2
+    dest: /etc/sysconfig/"{{ item.name }}"
+  loop: "{{ squid_instances }}"
+
+- name: ensure "{{ item.name }}" is running
+  service:
+    name: {{ item.name }}
+    state: started
+  loop: "{{ squid_instances }}"
