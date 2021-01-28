@@ -13,10 +13,21 @@
     setype: squid_conf_t
   loop: "{{ squid_instances }}"
 
-- name: copy config - template global files
+- name: copy config - template port file
   template:
     src: etc/squidglobal/g_ports.conf.j2
     dest: /etc/{{ item.name }}/g_ports.conf.j2
+    owner: squid
+    group: squid
+    mode: u=rw,g=r,o=r
+    seuser: system_u
+    setype: squid_conf_t
+  loop: "{{ squid_instances }}"
+
+- name: copy config - template restrictive acl
+  template:
+    src: etc/squidglobal/g_acl_restrictive.conf.j2
+    dest: /etc/{{ item.name }}/g_acl_restrictive.conf
     owner: squid
     group: squid
     mode: u=rw,g=r,o=r
