@@ -35,6 +35,18 @@
     setype: squid_conf_t
   loop: "{{ squid_instances }}"
 
+- name: copy config - restrictive sites
+  copy:
+    src: etc/{{ item.name }}/sites
+    dest: /etc/{{ item.name }}/sites
+    owner: squid
+    group: squid
+    mode: u=rw,g=r,o=r
+    seuser: system_u
+    setype: squid_conf_t
+  loop: "{{ squid_instances }}"
+  when: item.acl_type == "restrictive"
+
 - name: copy config - create {{ item.name }}.conf
   copy:
     src: etc/squidglobal/squid.conf
