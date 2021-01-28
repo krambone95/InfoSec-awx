@@ -1,4 +1,6 @@
 ---
+- include_vars:
+    file: ../vars/proxy_hosts.yml
 
 - name: create systemd service - place service.unit file
   template:
