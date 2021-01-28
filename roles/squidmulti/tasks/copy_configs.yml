@@ -11,7 +11,7 @@
     mode: u=rw,g=r,o=r
     seuser: system_u
     setype: squid_conf_t
-  loop: {{ squid_instances }}
+  loop: "{{ squid_instances }}"
 
 - name: copy config - template global files
   template:
@@ -22,7 +22,7 @@
     mode: u=rw,g=r,o=r
     seuser: system_u
     setype: squid_conf_t
-  loop: {{ squid_instances }}
+  loop: "{{ squid_instances }}"
 
 - name: copy config - create {{ item.name }}.conf
   copy:
@@ -33,4 +33,4 @@
     mode: u=rw,g=r,o=r
     seuser: system_u
     setype: squid_conf_t
-  loop: {{ squid_instances }}
+  loop: "{{ squid_instances }}"
