@@ -1,0 +1,9 @@
+---
+# Wrapper to start squidmulti
+
+- name: begin squidmulti management
+  hosts: all
+
+  roles:
+  - role: squidmulti
+    state: "{{ squidmulti_state }}"
