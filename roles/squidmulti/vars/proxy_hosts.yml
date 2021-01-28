@@ -15,3 +15,9 @@ squid_instances:
     port_https_proxy: 3136
     acl_type: permissive
     src_net: "192.168.56.132/32"
+  - name: squidopen
+    port_explicit_proxy: 3137
+    port_http_proxy: 3138
+    port_https_proxy: 3139
+    acl_type: permissive
+    src_net: "192.168.56.132/32"
