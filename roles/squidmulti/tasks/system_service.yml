@@ -16,6 +16,6 @@
 
 - name: create systemd service - service state started
   service:
-    name: {{ item.name }}
+    name: "{{ item.name }}"
     state: started
   loop: "{{ squid_instances }}"
