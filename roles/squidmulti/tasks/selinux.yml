@@ -3,7 +3,8 @@
     file: ../vars/proxy_hosts.yml
 - name: selinux ports
   seport:
-    ports: 3128,3129,3130
+    ports: "{{ item.port_explicit_proxy }}","{{ item.port_http_proxy }}","{{ item.port_https_proxy}}"
     proto: tcp
     setype: squid_port_t
     state: present
+  loop: "{{ squid_instances }}"
