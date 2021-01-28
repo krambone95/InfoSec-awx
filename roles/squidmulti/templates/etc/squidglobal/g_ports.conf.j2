@@ -3,13 +3,13 @@
 acl SafePorts port 80
 acl SafePorts port 443
 
-acl SafePorts port {{ squid_instances.port_explicit_proxy }}
-acl SafePorts port {{ squid_instances.port_http_proxy }}
-acl SafePorts port {{ squid_instances.port_https_proxy }}
+acl SafePorts port {{ item.port_explicit_proxy }}
+acl SafePorts port {{ item.port_http_proxy }}
+acl SafePorts port {{ item.port_https_proxy }}
 
-acl TProxyPorts port {{ squid_instances.port_explicit_proxy }}
-acl TProxyPorts port {{ squid_instances.port_http_proxy }}
-acl EproxyPorts port {{ squid_instances.port_https_proxy }}
+acl TProxyPorts port {{ item.port_explicit_proxy }}
+acl TProxyPorts port {{ item.port_http_proxy }}
+acl EproxyPorts port {{ item.port_https_proxy }}
 
 # Default blocks
 acl CONNECT method CONNECT
@@ -20,13 +20,13 @@ cache deny all
 
 http_access allow CONNECT all
 
-http_port {{ squid_instances.port_explicit_proxy }}
+http_port {{ item.port_explicit_proxy }}
 
 ### Listen - Intercept HTTP
-http_port {{ squid_instances.port_http_proxy }} intercept
+http_port {{ item.port_http_proxy }} intercept
 
 ### Listen - Intercept and bump HTTPS
-https_port {{ squid_instances.port_https_proxy }} intercept ssl-bump \
+https_port {{ item.port_https_proxy }} intercept ssl-bump \
 generate-host-certificates=on \
 dynamic_cert_mem_cache_size=4MB \
 cert=/etc/squid/ssl_cert/squidCA.pem \
