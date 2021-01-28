@@ -1,3 +1,6 @@
+---
+- include_vars:
+    file: ../vars/proxy_hosts.yml
 - name: copy config - static global files
   copy:
     src: etc/squidglobal/
