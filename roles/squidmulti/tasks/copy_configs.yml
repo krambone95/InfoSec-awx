@@ -16,7 +16,7 @@
 - name: copy config - template port file
   template:
     src: etc/squidglobal/g_ports.conf.j2
-    dest: /etc/{{ item.name }}/g_ports.conf.j2
+    dest: /etc/{{ item.name }}/g_ports.conf
     owner: squid
     group: squid
     mode: u=rw,g=r,o=r
