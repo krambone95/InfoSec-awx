@@ -4,8 +4,8 @@
 
 - name: create systemd service - place service.unit file
   template:
-    src: usr/lib/systemd/service_name.service.j2
-    dest: /usr/lib/systemd/{{ item.name }}.service
+    src: usr/lib/systemd/system/service_name.service.j2
+    dest: /usr/lib/systemd/system/{{ item.name }}.service
   loop: "{{ squid_instances }}"
 
 - name: create systemd service - place env variable
