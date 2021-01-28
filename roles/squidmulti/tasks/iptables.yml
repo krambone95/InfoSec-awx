@@ -10,6 +10,3 @@
       -A PREROUTING -s {{ item.src_net }} -i {{ ansible_default_ipv4.interface }} -p tcp -m tcp --dport 443 -m comment --comment "443 to squid {{ item.port_https_proxy }}" -j REDIRECT --to-ports {{ item.port_https_proxy }}
     marker: "# {mark} ANSIBLE MANAGED BLOCK {{item}}"
   loop: "{{ squid_instances }}"
-
-
-
