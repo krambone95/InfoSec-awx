@@ -2,7 +2,7 @@
 
 ##########################
 ### Service names and port mapping
-service_names:
+squid_instances:
   - name: squidvpm
     port_explicit_proxy: 3131
     port_http_proxy: 3132
