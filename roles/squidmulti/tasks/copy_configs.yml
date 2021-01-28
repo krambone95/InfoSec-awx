@@ -5,32 +5,32 @@
 - name: copy config - static global files
   copy:
     src: etc/squidglobal/
-    dest: /etc/"{{ item.name }}"/
+    dest: /etc/{{ item.name }}/
     owner: squid
     group: squid
     mode: u=rw,g=r,o=r
     seuser: system_u
     setype: squid_conf_t
-  loop: "{{ squid_instances }}"
+  loop: {{ squid_instances }}
 
 - name: copy config - template global files
   template:
     src: etc/squidglobal/g_ports.conf.j2
-    dest: /etc/"{{ item.name }}"/g_ports.conf.j2
+    dest: /etc/{{ item.name }}/g_ports.conf.j2
     owner: squid
     group: squid
     mode: u=rw,g=r,o=r
     seuser: system_u
     setype: squid_conf_t
-  loop: "{{ squid_instances }}"
+  loop: {{ squid_instances }}
 
-- name: copy config - create "{{ item.name }}".conf
+- name: copy config - create {{ item.name }}.conf
   copy:
     src: etc/squidglobal/squid.conf
-    dest: /etc/"{{ item.name }}"/squid.conf
+    dest: /etc/{{ item.name }}/squid.conf
     owner: squid
     group: squid
     mode: u=rw,g=r,o=r
     seuser: system_u
     setype: squid_conf_t
-  loop: "{{ squid_instances }}"
+  loop: {{ squid_instances }}
