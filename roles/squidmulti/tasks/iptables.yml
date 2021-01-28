@@ -1,0 +1,13 @@
+---
+
+
+- name: Add iptables routing
+  blockinfile:
+    path:/etc/sysconfig/iptables
+    insertbefore:"##end_squid_multi"
+    block: |
+      -A PREROUTING -s "{{ item.src_net }}" -i {{ ansible_default_ipv4.interface }} -p tcp -m tcp --dport 80 -m comment --comment "80 to squid 3129" -j REDIRECT --to-ports "{{ item.port_http_proxy }}"
+      -A PREROUTING -s "{{ item.src_net }}" -i {{ ansible_default_ipv4.interface }} -p tcp -m tcp --dport 443 -m comment --comment "443 to squid 3130" -j REDIRECT --to-ports "{{ item.port_https_proxy }}"
+  loop: "{{ squid_instances }}"
+  notify:
+  - restart iptables
