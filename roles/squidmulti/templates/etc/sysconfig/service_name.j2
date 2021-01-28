@@ -1,10 +1,10 @@
 ### env for squid service
 # default squid options
-SQUID_OPTS="-n {{ squid_instances.name }}"
+SQUID_OPTS="-n {{ item.name }}"
 
 # Time to wait for Squid to shut down when asked. Should not be necessary
 # most of the time.
 SQUID_SHUTDOWN_TIMEOUT=100
 
 # default squid conf file
-SQUID_CONF="/etc/{{ squid_instances.name }}/{{ squid_instances.name }}.conf"
+SQUID_CONF="/etc/{{ item.name }}/{{ item.name }}.conf"
