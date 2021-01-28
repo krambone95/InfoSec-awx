@@ -38,7 +38,7 @@
 - name: copy config - restrictive sites
   copy:
     src: etc/{{ item.name }}/sites
-    dest: /etc/{{ item.name }}/sites
+    dest: /etc/{{ item.name }}/
     owner: squid
     group: squid
     mode: u=rw,g=r,o=r
