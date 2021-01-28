@@ -27,7 +27,7 @@
 - name: copy config - create {{ item.name }}.conf
   copy:
     src: etc/squidglobal/squid.conf
-    dest: /etc/{{ item.name }}/squid.conf
+    dest: /etc/{{ item.name }}/{{ item.name }}.conf
     owner: squid
     group: squid
     mode: u=rw,g=r,o=r
