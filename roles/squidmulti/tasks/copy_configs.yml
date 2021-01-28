@@ -47,9 +47,9 @@
   loop: "{{ squid_instances }}"
   when: item.acl_type == "restrictive"
 
-- name: copy config - create {{ item.name }}.conf
+- name: copy config - create conf
   copy:
-    src: etc/squidglobal/squid.conf
+    src: etc/squidglobal/squid_{{ item.acl_type }}.conf
     dest: /etc/{{ item.name }}/{{ item.name }}.conf
     owner: squid
     group: squid
