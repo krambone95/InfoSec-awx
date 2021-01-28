@@ -11,8 +11,6 @@
     seuser: system_u
     setype: squid_conf_t
   loop: "{{ squid_instances }}"
-  notify:
-  - restart squid
 
 - name: copy config - template global files
   template:
@@ -24,8 +22,6 @@
     seuser: system_u
     setype: squid_conf_t
   loop: "{{ squid_instances }}"
-  notify:
-  - restart squid
 
 - name: copy config - create "{{ item.name }}".conf
   copy:
