@@ -15,5 +15,5 @@
   when: state == 'present'
 
 - name: update acl
-  include_tasks: update_acl.yml
-  when: state == 'update_acl'
+  include_tasks: update_acls.yml
+  when: state == 'update_acls'
