@@ -3,13 +3,13 @@
 
 - name: Install auditd
   include_tasks: copy_configs.yml
-  when: state == 'test'
+  when: state == 'present'
 - name: Install auditd
   include_tasks: selinux_ports.yml
-  when: state == 'test'
+  when: state == 'present'
 - name: Install auditd
   include_tasks: iptables.yml
-  when: state == 'test'
+  when: state == 'present'
 - name: Install auditd
   include_tasks: system_service.yml
-  when: state == 'test'
+  when: state == 'present'
