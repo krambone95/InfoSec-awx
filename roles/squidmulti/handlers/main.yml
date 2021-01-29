@@ -1,16 +1,20 @@
 ---
 # Handlers
+- include_vars:
+    file: ../vars/proxy_hosts.yml
 
 # Restart squid service
 - name: restart squid
   service:
-    name: squid
+    name: "{{ item.name }}"
     state: restarted
+  loop: "{{ squid_instances }}"
 
 - name: reload squid
   service:
-    name: squid
+    name: "{{ item.name }}"
     state: reloaded
+  loop: "{{ squid_instances }}"
 
 # Restart firewalld service
 - name: restart iptables
