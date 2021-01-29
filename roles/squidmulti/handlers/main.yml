@@ -8,13 +8,11 @@
   service:
     name: "{{ item.name }}"
     state: restarted
-  loop: "{{ squid_instances }}"
 
 - name: reload squid
   service:
     name: "{{ item.name }}"
     state: reloaded
-  loop: "{{ squid_instances }}"
 
 # Restart firewalld service
 - name: restart iptables
