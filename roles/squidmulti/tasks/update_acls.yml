@@ -1,0 +1,15 @@
+---
+- include_vars:
+    file: ../vars/proxy_hosts.yml
+
+- name: copy config - restrictive sites
+  copy:
+    src: etc/{{ item.name }}/sites
+    dest: /etc/{{ item.name }}/
+    owner: squid
+    group: squid
+    mode: u=rw,g=r,o=r
+    seuser: system_u
+    setype: squid_conf_t
+  loop: "{{ squid_instances }}"
+  when: item.acl_type == "restrictive"
