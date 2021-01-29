@@ -11,7 +11,7 @@
     mode: u=rw,g=r,o=r
     seuser: system_u
     setype: squid_conf_t
-  notify:
-  - restart squid
   loop: "{{ squid_instances }}"
   when: item.acl_type == "restrictive"
+  notify:
+  - restart squid
