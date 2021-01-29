@@ -13,3 +13,7 @@
 - name: create systemctl service
   include_tasks: system_service.yml
   when: state == 'present'
+
+- name: update acl
+  include_tasks: update_acl.yml
+  when: state == 'update_acl'
