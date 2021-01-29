@@ -1,15 +1,15 @@
 ---
 # Install / Uninstall squid client settings
 
-- name: Install auditd
+- name: copy config flies
   include_tasks: copy_configs.yml
   when: state == 'present'
-- name: Install auditd
+- name: configure selinux ports
   include_tasks: selinux_ports.yml
   when: state == 'present'
-- name: Install auditd
+- name: configure iptables
   include_tasks: iptables.yml
   when: state == 'present'
-- name: Install auditd
+- name: create systemctl service
   include_tasks: system_service.yml
   when: state == 'present'
