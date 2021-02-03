@@ -4,7 +4,7 @@
 - name: begin squidmulti management
   hosts: all
   vars_files:
-    - roles/squidmulti/vars/chicago.yml
+    - roles/squidmulti/vars/{{ proxy_location }}.yml
 
   roles:
   - role: squidmulti
