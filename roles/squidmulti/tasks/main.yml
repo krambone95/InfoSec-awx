@@ -1,8 +1,6 @@
 ---
 # Install / Uninstall squid client settings
-hosts: all
-  vars_files:
-    - ../vars/chicago.yml
+
 - name: copy config flies
   include_tasks: copy_configs.yml
   when: state == 'present'
