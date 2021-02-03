@@ -3,7 +3,6 @@
 
 - name: configure squid client
   hosts: all
-  vars_files:
-    - ../vars/chicago.yml
+  
   roles:
     - squid
