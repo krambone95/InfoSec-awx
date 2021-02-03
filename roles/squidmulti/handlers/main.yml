@@ -12,6 +12,13 @@
     name: "{{ item.name }}"
     state: reloaded
 
+- name: restart changed services
+  service:
+    name: "{{ item.name }}"
+    state: restarted
+  when: item.name in restart_services
+  loop: "{{ squid_instances}}"
+
 # Restart firewalld service
 - name: restart iptables
   service:
