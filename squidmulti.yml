@@ -3,6 +3,8 @@
 
 - name: begin squidmulti management
   hosts: all
+  vars_files:
+    - ../vars/chicago.yml
 
   roles:
   - role: squidmulti
