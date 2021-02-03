@@ -16,7 +16,7 @@
   set_fact:
     restart_services: "{{ restart_services | default([]) + [item.item.name] }}"
   when: item.changed
-  loop: "{{ squid_instances }}"
+  loop: "{{ services_changed.results }}"
 
 
 - name: copy config - template port file
