@@ -15,7 +15,7 @@
 - name: remember which services need restarted
   set_fact:
     restart_services: "{{ restart_services | default([]) + [item.item.name] }}"
-  when item.changed
+  when: item.changed
   loop: "{{ squid_instances }}"
 
 
