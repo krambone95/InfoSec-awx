@@ -1,7 +1,5 @@
 ---
 # Handlers
-- include_vars:
-    file: ../vars/proxy_hosts.yml
 
 # Restart squid service
 - name: restart squid
