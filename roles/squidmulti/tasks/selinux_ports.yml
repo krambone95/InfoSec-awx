@@ -1,6 +1,4 @@
 ---
-- include_vars:
-    file: ../vars/proxy_hosts.yml
 - name: selinux ports
   seport:
     ports: "{{ item.port_explicit_proxy }},{{ item.port_http_proxy }},{{ item.port_https_proxy}}"
