@@ -1,6 +1,4 @@
 ---
-- include_vars:
-    file: ../vars/proxy_hosts.yml
 - name: Add iptables routing
   blockinfile:
     path: /etc/sysconfig/iptables
