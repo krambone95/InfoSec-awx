@@ -1,6 +1,8 @@
 ---
 # Install / Uninstall squid client settings
-
+hosts: all
+  vars_files:
+    - /vars/external_vars.yml
 - name: copy config flies
   include_tasks: copy_configs.yml
   when: state == 'present'
