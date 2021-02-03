@@ -9,6 +9,8 @@
     seuser: system_u
     setype: squid_conf_t
   loop: "{{ squid_instances }}"
+  notify: restart changed services
+  register: services_changed
 
 - name: copy config - template port file
   template:
@@ -20,6 +22,8 @@
     seuser: system_u
     setype: squid_conf_t
   loop: "{{ squid_instances }}"
+  notify: restart changed services
+  register: services_changed
 
 - name: copy config - template restrictive acl
   template:
@@ -31,6 +35,8 @@
     seuser: system_u
     setype: squid_conf_t
   loop: "{{ squid_instances }}"
+  notify: restart changed services
+  register: services_changed
 
 - name: copy config - restrictive sites
   copy:
@@ -43,6 +49,8 @@
     setype: squid_conf_t
   loop: "{{ squid_instances }}"
   when: item.acl_type == "restrictive"
+  notify: restart changed services
+  register: services_changed
 
 - name: copy config - create conf
   copy:
@@ -54,3 +62,5 @@
     seuser: system_u
     setype: squid_conf_t
   loop: "{{ squid_instances }}"
+  notify: restart changed services
+  register: services_changed
