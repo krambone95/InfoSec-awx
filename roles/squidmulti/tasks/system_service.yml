@@ -5,12 +5,6 @@
     dest: /usr/lib/systemd/system/{{ item.name }}.service
   loop: "{{ squid_instances }}"
 
-- name: create systemd service - place env variable
-  template:
-    src: etc/sysconfig/service_name.j2
-    dest: /etc/sysconfig/{{ item.name }}
-  loop: "{{ squid_instances }}"
-
 - name: create systemd service - service state started
   service:
     name: "{{ item.name }}"
