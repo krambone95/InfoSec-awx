@@ -1,0 +1,6 @@
+---
+- name: Remove configs
+  ansible.builtin.file:
+    path: /etc/{{ item.name }}/
+    state: absent
+  loop: "{{ squid_instances }}"
