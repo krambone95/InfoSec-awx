@@ -17,3 +17,7 @@
 - name: update acl
   include_tasks: update_acls.yml
   when: state == 'update_acls'
+
+- name: delete iptables
+  include: delete_iptables.yml
+  when: state == "absent"
