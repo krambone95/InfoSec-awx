@@ -16,12 +16,11 @@ CPUAccounting=true
 Type=forking
 LimitNOFILE=16384
 PIDFile=/var/run/squid.pid
-ExecStartPre=/usr/bin/mkdir -p /var/run/squid
-ExecStartPre=/usr/bin/chown squid.squid /var/run/squid
-ExecStart=/usr/sbin/squid -sYC -n squid
-ExecReload=/usr/sbin/squid -kreconf -n squid
-#ExecStop=/usr/sbin/squidshut.sh
-ExecStop=/usr/sbin/squid -k shutdown -n squid
+ExecStartPre=/usr/bin/mkdir -p /var/run/{{ item.name }}
+ExecStartPre=/usr/bin/chown squid.squid /var/run/{{ item.name }}
+ExecStart=/usr/sbin/squid -sYC -n {{ item.name }}
+ExecReload=/usr/sbin/squid -kreconf -n {{ item.name }}
+ExecStop=/usr/sbin/squid -k shutdown -n {{ item.name }}
 TimeoutStopSec=36
 KillMode=none
 
