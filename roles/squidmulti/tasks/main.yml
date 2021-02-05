@@ -18,6 +18,15 @@
   include_tasks: update_acls.yml
   when: state == 'update_acls'
 
-- name: delete iptables
+- name: delete_iptables
   include: delete_iptables.yml
+  when: state == "absent"
+- name: delete_system_service
+  include: delete_system_service.yml
+  when: state == "absent"
+- name: delete_selinux_ports
+  include: delete_selinux_ports.yml
+  when: state == "absent"
+- name: delete_configs
+  include: delete_configs.yml
   when: state == "absent"
