@@ -1,15 +1,11 @@
 ---
 - name: stop service
-  service:
+  systemd:
     name: "{{ item.name }}"
     state: stopped
+    enabled: no
   loop: "{{ squid_instances }}"
 
-- name: disable service
-  service:
-    name: "{{ item.name }}"
-    state: disabled
-  loop: "{{ squid_instances }}"
 
 - name: delete unit file
   ansible.builtin.file:
