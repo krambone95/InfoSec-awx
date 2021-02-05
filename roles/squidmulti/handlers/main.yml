@@ -15,7 +15,7 @@
 - name: restart changed services
   service:
     name: "{{ item.name }}"
-    state: restarted
+    state: reloaded
   when: item.name in restart_services
   loop: "{{ squid_instances}}"
 
