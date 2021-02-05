@@ -10,5 +10,11 @@
     setype: squid_conf_t
   loop: "{{ squid_instances }}"
   when: item.acl_type == "restrictive"
-  notify:
-  - restart squid
+  notify: restart changed services
+  register: services_changed
+
+- name: remember which services need restarted
+  set_fact:
+    restart_services: "{{ restart_services | default([]) + [item.item.name] }}"
+  when: item.changed
+  loop: "{{ services_changed.results }}"
