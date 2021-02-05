@@ -1,17 +1,17 @@
 ---
-- name: create systemd service - service state started
+- name: stop service
   service:
     name: "{{ item.name }}"
     state: stopped
   loop: "{{ squid_instances }}"
 
-- name: create systemd service - service state started
+- name: disable service
   service:
     name: "{{ item.name }}"
     state: disabled
   loop: "{{ squid_instances }}"
 
-- name: Remove file (delete file)
+- name: delete unit file
   ansible.builtin.file:
     path: /usr/lib/systemd/system/{{ item.name }}.service
     state: absent
