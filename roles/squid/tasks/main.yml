@@ -2,7 +2,7 @@
 # ensure squid is installed
 - name: ensure squid is installed
   package:
-    name: squid
+    name: squid-4.9-1.el7
     state: present
 
 #ensure squid is installed
