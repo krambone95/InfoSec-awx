@@ -6,7 +6,9 @@
   loop: "{{ squid_instances }}"
 
 - name: create systemd service - service state started
-  service:
+  systemd:
     name: "{{ item.name }}"
     state: started
+    enabled: yes
+    daemon_reload: yes
   loop: "{{ squid_instances }}"
