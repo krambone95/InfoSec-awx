@@ -1,4 +1,4 @@
-- name: Add iptables routing
+- name: Delete iptables routing
   blockinfile:
     path: /etc/sysconfig/iptables
     insertafter: "##start_squid_multi"
