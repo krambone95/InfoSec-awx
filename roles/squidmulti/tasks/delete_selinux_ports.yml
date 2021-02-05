@@ -1,0 +1,8 @@
+---
+- name: selinux ports
+  seport:
+    ports: "{{ item.port_explicit_proxy }},{{ item.port_http_proxy }},{{ item.port_https_proxy}}"
+    proto: tcp
+    setype: squid_port_t
+    state: absent
+  loop: "{{ squid_instances }}"
