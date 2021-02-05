@@ -1,0 +1,18 @@
+---
+- name: create systemd service - service state started
+  service:
+    name: "{{ item.name }}"
+    state: stopped
+  loop: "{{ squid_instances }}"
+
+- name: create systemd service - service state started
+  service:
+    name: "{{ item.name }}"
+    state: disabled
+  loop: "{{ squid_instances }}"
+
+- name: Remove file (delete file)
+  ansible.builtin.file:
+    path: /usr/lib/systemd/system/{{ item.name }}.service
+    state: absent
+  loop: "{{ squid_instances }}"
