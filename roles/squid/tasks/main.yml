@@ -1,5 +1,11 @@
 ---
 # ensure squid is installed
+- name: Add repository
+  yum_repository:
+    name: squid
+    description: Squid EPEL Repo
+    baseurl: http://ngtech.co.il/repo/centos/7/squid-repo-1-1.el7.centos.noarch.rpm
+
 - name: ensure squid is installed
   package:
     name: squid-4.9-1.el7
