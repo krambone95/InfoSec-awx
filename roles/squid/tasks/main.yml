@@ -2,9 +2,9 @@
 # ensure squid is installed
 - name: Add repository
   yum_repository:
-    name: squid
+    name: Squid repo for CentOS Linux - 7
     description: Squid EPEL Repo
-    baseurl: http://ngtech.co.il/repo/centos/7/squid-repo-1-1.el7.centos.noarch.rpm
+    baseurl: http://www1.ngtech.co.il/repo/centos/$releasever/beta/$basearch/
 
 - name: ensure squid is installed
   package:
