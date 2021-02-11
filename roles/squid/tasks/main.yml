@@ -8,20 +8,20 @@
 
 - name: ensure squid is installed
   package:
-    name: squid-4.9-1.el7
+    name: squid
     state: present
 
 #ensure squid is installed
 - name: ensure squid-helpers is installed
   package:
-    name: squid-helpers-4.9-1.el7
+    name: squid-helpers
     state: present
   ignore_errors: yes
 
 #ensure squid-debuginfo is installed
 - name: ensure squid is installed
   package:
-    name: squid-debuginfo-4.9-1.el7
+    name: squid-debuginfo
     state: present
   ignore_errors: yes
 
